@@ -25,13 +25,13 @@ public static class Slug
 
     private static string ToLowercaseAndHyphenSeparator(string text, char connector, char separator, int? max)
     {
-        Span<char> span = text.Length < 1000
-            ? stackalloc char[text.Length]
-            : new char[text.Length];
+        var limit = max ?? text.Length;
+        Span<char> span = limit < 1000
+            ? stackalloc char[limit]
+            : new char[limit];
 
-        var limit = (max ?? text.Length) + 1;
         var j = 0;
-        for (var i = 0; i < limit && i < text.Length; i++)
+        for (var i = 0; j < limit && i < text.Length; i++)
         {
             var c = text[i];
             var info = CharUnicodeInfo.GetUnicodeCategory(c);
@@ -46,9 +46,27 @@ public static class Slug
                     span[j++] = c;
                     break;
                 case UnicodeCategory.ConnectorPunctuation:
+                    if (j - 1 >= 0)
+                    {
+                        // Truncate multiple connectors into a single character
+                        var prevChar = span[j - 1];
+                        if (prevChar == connector)
+                        {
+                            continue;
+                        }
+                    }
                     span[j++] = connector;
                     break;
                 default:
+                    if (j - 1 >= 0)
+                    {
+                        // Truncate separators
+                        var prevChar = span[j - 1];
+                        if (prevChar == separator)
+                        {
+                            continue;
+                        }
+                    }
                     span[j++] = separator;
                     break;
             }
