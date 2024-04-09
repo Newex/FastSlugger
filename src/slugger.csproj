@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>FastSlugger</AssemblyName>
+    <RootNamespace>FastSlugger</RootNamespace>
+    <Authors>Johnny Kristian Moeberg Sørensen (Newex)</Authors>
+    <Description>Fast and simple slugger using the newest c# features that generates clean and user friendly text</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);NU1803</NoWarn>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>simple slug</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl></RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AnyAscii" Version="0.3.2" />
+    <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.2.2" />
+  </ItemGroup>
+
+</Project>
