@@ -1,3 +1,4 @@
+using Bogus;
 using FluentAssertions;
 using Xunit.Categories;
 
@@ -88,5 +89,19 @@ public class Testing
 
         // Assert
         slug.Should().Be("crown-palm_tree");
+    }
+
+    [Fact]
+    public void Long_bogus_string()
+    {
+        // Arrange
+        var faker = new Faker();
+        var mumboJumbo = faker.Random.String(500);
+
+        // Act
+        var slug = Slug.Create(mumboJumbo);
+
+        // Assert
+        slug.Should().NotBeNullOrWhiteSpace();
     }
 }
