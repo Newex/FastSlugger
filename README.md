@@ -1,13 +1,47 @@
 # What is it
 A slug creator.
 
-Behind the scenes, this uses the package `AnyAscii` slugger. But the output is refined further to replace spaces with dashes and non alphanumeric characters with empty characters.
+Example slugs
+
+| Input | Output |
+|-------|--------|
+| text.contains.!marks#: | textcontainsmarks |
+| Hello Kønnìchiwa | hello-konnichiwa |
+| some--LONG_space-- | some-long_space- |
+| 👑 🌴 | crown-palm_tree |
+| Привет | privet |
+
+
+Behind the scenes, this uses the package `AnyAscii` slugger, which also transliterates.
+
+The slug uses dashes to `separate-words` and makes all characters lowercase.  
+Any punctuation, such as `#` or `.` are removed.  
+Any consecutive dashes are squashed to a single dash.  
+Any connector punctuation such as `‿` are converted to `_`.
 
 # Installation
 
 `dotnet add package FastSlugger`
 
-# 
+# Usage
+
+```csharp
+using FastSlugger;
+
+var text = "Create a new slug! Frøm ènglish#---txt";
+
+// Output: "create-a-new-slug-from-english-txt"
+var slug = Slug.Create(text);
+```
+
+You can configure the slugger by overriding the default parameter values for the connector character, the separator character and how long the slug should maximally be.
+
+# Remarks
+This library uses stack allocation if the slug length is less than 1000 characters, which can be seen by the benchmark result.
+
+The AnyAscii library seems to be a huge custom lookup table.
+
+Furthermore the string creation uses the high performance community toolkit library to minimize string allocation.
 
 # Benchmark results
 
