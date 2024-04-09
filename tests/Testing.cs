@@ -92,16 +92,30 @@ public class Testing
     }
 
     [Fact]
-    public void Long_bogus_string()
+    public void Long_bogus_string_should_not_be_cutoff_if_max_is_greater_than_length()
+    {
+        // Arrange
+        var faker = new Faker();
+        var mumboJumbo = faker.Random.String(20);
+
+        // Act
+        var slug = Slug.Create(mumboJumbo, max: 100);
+
+        // Assert
+        slug.Length.Should().BeLessThanOrEqualTo(100);
+    }
+
+    [Fact]
+    public void Long_bogus_string_should_be_cutoff_if_max_is_less_than_length()
     {
         // Arrange
         var faker = new Faker();
         var mumboJumbo = faker.Random.String(500);
 
         // Act
-        var slug = Slug.Create(mumboJumbo);
+        var slug = Slug.Create(mumboJumbo, max: 20);
 
         // Assert
-        slug.Should().NotBeNullOrWhiteSpace();
+        slug.Length.Should().Be(20);
     }
 }
