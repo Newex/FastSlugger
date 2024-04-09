@@ -11,10 +11,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);NU1803</NoWarn>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>simple slug</PackageTags>
+    <PackageTags>fast simple slug transliteration</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl></PackageProjectUrl>
-    <RepositoryUrl></RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Newex/FastSlugger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Newex/FastSlugger</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
