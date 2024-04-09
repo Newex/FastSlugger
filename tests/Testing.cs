@@ -118,4 +118,17 @@ public class Testing
         // Assert
         slug.Length.Should().Be(20);
     }
+
+    [Fact]
+    public void Simple_slug()
+    {
+        // Arrange
+        var text = "Create a new slug! Frøm ènglish#---txt";
+
+        // Act
+        var slug = Slug.Create(text);
+
+        // Assert
+        slug.Should().Be("create-a-new-slug-from-english-txt");
+    }
 }
