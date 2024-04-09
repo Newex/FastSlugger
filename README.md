@@ -14,7 +14,7 @@ Example slugs
 
 Behind the scenes, this uses the package `AnyAscii` slugger, which also transliterates.
 
-The slug uses dashes to `separate-words` and makes all characters lowercase.  
+This library then uses dashes to `separate-words` and makes all characters lowercase.  
 Any punctuation, such as `#` or `.` are removed.  
 Any consecutive dashes are squashed to a single dash.  
 Any connector punctuation such as `‿` are converted to `_`.
