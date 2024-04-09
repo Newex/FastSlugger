@@ -13,14 +13,16 @@ public static class Slug
     /// Create a slug from a given text input
     /// </summary>
     /// <param name="input">The text input</param>
+    /// <param name="connector">The connector character</param>
+    /// <param name="separator">The separator character</param>
     /// <returns>A slug</returns>
-    public static string Create(string input)
+    public static string Create(string input, char connector = '_', char separator = '-')
     {
         var transliterate = input.Transliterate();
-        return ToLowercaseAndHyphenSeparator(transliterate);
+        return ToLowercaseAndHyphenSeparator(transliterate, connector, separator);
     }
 
-    private static string ToLowercaseAndHyphenSeparator(string text)
+    private static string ToLowercaseAndHyphenSeparator(string text, char connector, char separator)
     {
         Span<char> span = text.Length < 1000
             ? stackalloc char[text.Length]
@@ -42,10 +44,10 @@ public static class Slug
                     span[j++] = c;
                     break;
                 case UnicodeCategory.ConnectorPunctuation:
-                    span[j++] = '_';
+                    span[j++] = connector;
                     break;
                 default:
-                    span[j++] = '-';
+                    span[j++] = separator;
                     break;
             }
         }
