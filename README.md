@@ -1,10 +1,14 @@
-# What is it
-<p align='center'>
-  ![](/assets/images/snail.png)
-</p>
+![NuGet Version](https://img.shields.io/nuget/v/FastSlugger)
 
-  A slug creator. Create slug to use for as human and url friendly text.  
-  Typical use case would be to refer to resources by their name.
+# What is it
+
+  A blazingly fast slug creator. Create text that is easily read by humans and is url friendly.
+  Typical use case would be to refer to resources by their name.  
+  This can help both your users and search engines to categorize your exposed resources.
+
+<p align=''>
+  <img src="assets/images/snail.png">
+</p>
 
 Example slugs
 
