@@ -111,12 +111,13 @@ public class Testing
         // Arrange
         var faker = new Faker();
         var mumboJumbo = faker.Random.String(500);
+        var maxSize = 20;
 
         // Act
-        var slug = Slug.Create(mumboJumbo, max: 20);
+        var slug = Slug.Create(mumboJumbo, max: maxSize);
 
         // Assert
-        slug.Length.Should().Be(20);
+        slug.Length.Should().Be(maxSize);
     }
 
     [Fact]
