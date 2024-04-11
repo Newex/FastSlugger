@@ -20,7 +20,9 @@ public static class Slug
     /// <returns>A slug</returns>
     public static string Create(string input, char connector = '_', char separator = '-', char? punctuation = null, int? max = null)
     {
-        var transliterate = input.Transliterate();
+        var length = Math.Min(input.Length, max.GetValueOrDefault());
+        var chunk = !max.HasValue ? input : input[0..length];
+        var transliterate = chunk.Transliterate();
         return ToLowercaseAndHyphenSeparator(transliterate, connector, separator, punctuation, max);
     }
 
