@@ -7,11 +7,11 @@
     <AssemblyName>FastSlugger</AssemblyName>
     <RootNamespace>FastSlugger</RootNamespace>
     <Authors>Johnny Kristian Moeberg Sørensen (Newex)</Authors>
-    <Description>Fast and simple slugger using the newest c# features that generates clean and user friendly text</Description>
+    <Description>Fast and simple slugger using the newest c# features that generates clean and url/user friendly text</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);NU1803</NoWarn>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>fast simple slug transliteration</PackageTags>
+    <PackageTags>fast simple slug transliteration url friendly text</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Newex/FastSlugger</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Newex/FastSlugger</RepositoryUrl>
