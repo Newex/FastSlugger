@@ -117,7 +117,7 @@ Package versions used:
 - SlugGenerator v.4.0.1
 
 ## Findings
-- **FastSlugger** handles ill-formed strings and respects max size limit for slug. Is conservative with heap allocation, and uses shared string caching making it consistently first in memory footprint.
+- **FastSlugger** handles ill-formed strings and respects max size limit for slug. Is conservative with heap allocation, and uses shared string caching making it consistently first in memory footprint and in normal slug creation use case.
 
 - **SlugGenerator** seems to be a viable alternative, can be ~1.6x faster than FastSlugger in some benchmark runs, when input is constructed with ill-formed UTF strings - though I cannot speak to the validity of the output slug.
 
