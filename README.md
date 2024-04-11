@@ -6,7 +6,7 @@
 
 # What is it
 
-  A blazingly fast slug creator. Create text that is easily read by humans and is url friendly.
+  🔥 A blazingly fast slug creator. Create text that is easily read by humans and is url friendly.
   Typical use case would be to refer to resources by their name.  
   This can help both your users and search engines to categorize your exposed resources.
 
