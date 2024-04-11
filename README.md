@@ -74,12 +74,31 @@ Furthermore the string creation uses the high performance community toolkit libr
 
 # Benchmark results
 
+**Notes on benchmarking**  
+There are 2 ways to test the max size limit of a slug.
+
+a) Cut the input text to the max size before creating the slug.  
+b) Cut the slug to the max size after creation.
+
+Option a - is the most efficient method.  
+Option b - ensures correctness by making the output no longer than the max limit
+
+`FastSlugger` does option a, natively, then during lowercase and hyphen construction phase, the constructed slug will stop when max size is reached (option b). Best of both worlds. Neither `Slugify.Core` or `SlugGenerator` has the native option to limit max output size.
+
+## Test scenario
+Well-formed UTF16 string with 200 random words as input, with no additional configuration, i.e. no max size limit or special character handling. See benchmacks folder for specific setup.
+
+Why this scenario? Because otherwise there would be no data for `Slugify.Core` since it cannot run on ill-formed UTF16 strings.
+
 **System**  
+
+```
 BenchmarkDotNet v0.13.12, Ubuntu 23.04 (Lunar Lobster) WSL
 AMD Ryzen 7 3700X, 1 CPU, 4 logical and 2 physical cores
 .NET SDK 8.0.203
   [Host]     : .NET 8.0.3 (8.0.324.11423), X64 RyuJIT AVX2
   DefaultJob : .NET 8.0.3 (8.0.324.11423), X64 RyuJIT AVX2
+```
 
 
 **Result**  
@@ -96,3 +115,10 @@ Outliers:
 Package versions used:  
 - Slugify.Core v.2.0.2  
 - SlugGenerator v.4.0.1
+
+## Findings
+- **FastSlugger** handles ill-formed strings and respects max size limit for slug. Is conservative with heap allocation, and uses shared string caching making it consistently first in memory footprint.
+
+- **SlugGenerator** seems to be a viable alternative, can be ~1.6x faster than FastSlugger in some benchmark runs, when input is constructed with ill-formed UTF strings - though I cannot speak to the validity of the output slug.
+
+- **Slugify.Core** is consistently last place in my benchmarks, in both speed and memory footprint, cannot handle ill-formed UTF strings.
