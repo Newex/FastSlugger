@@ -1,5 +1,10 @@
 # What is it
-A slug creator.
+<p align='center'>
+  ![](/assets/images/snail.png)
+</p>
+
+  A slug creator. Create slug to use for as human and url friendly text.  
+  Typical use case would be to refer to resources by their name.
 
 Example slugs
 
