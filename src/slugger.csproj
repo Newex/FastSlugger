@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="AnyAscii" Version="0.3.2" />
-    <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.3.2" />
   </ItemGroup>
 
 </Project>
