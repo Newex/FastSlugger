@@ -132,4 +132,17 @@ public class Testing
         // Assert
         slug.Should().Be("create-a-new-slug-from-english-txt");
     }
+
+    [Fact]
+    public void Space_following_number_slug()
+    {
+        // Arrange
+        var text = "Child page 2";
+
+        // Act
+        var slug = Slug.Create(text);
+
+        // Assert
+        slug.Should().Be("child-page-2");
+    }
 }
