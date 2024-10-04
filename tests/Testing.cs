@@ -137,12 +137,12 @@ public class Testing
     public void Space_following_number_slug()
     {
         // Arrange
-        var text = "Child page 2";
+        var text = "C 2";
 
         // Act
-        var slug = Slug.Create(text);
+        var slug = Slug.Create(text, includeNumbers: true);
 
         // Assert
-        slug.Should().Be("child-page-2");
+        slug.Should().Be("c-2");
     }
 }
